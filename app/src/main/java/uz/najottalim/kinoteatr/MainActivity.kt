@@ -1,23 +1,31 @@
 package uz.najottalim.kinoteatr
 
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import uz.najottalim.kinoteatr.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        submit_button.setOnClickListener {
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
-            val name: String = name_input.text.toString()
+        val view: View = binding.root
 
-            greeter_text.setText("Hello ${name}!")
+        setContentView(view)
+
+        binding.submitButton.setOnClickListener {
+
+            val name: String = binding.nameInput.text.toString()
+            binding.greeterText.text = "Hello ${name}"
+
 
         }
 
